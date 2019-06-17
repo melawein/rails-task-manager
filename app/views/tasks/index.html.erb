@@ -1,11 +1,9 @@
-<h1>Your List of Tasks</h1>
+<h1>Tasks</h1>
 
-<ul>
-  <% @tasks.each do |task| %>
-   <p><%= check_box("tag", tag.id, {checked: task.completed}) %>
-    <%= link_to task.title, task_path(task)  %></p>
+ <% @tasks.each do |task| %>
+ <p> <%= check_box("tag", tag.id, {checked: task.completed}) %> <%= link_to task.title, task_path(task) %>
+   <%= link_to 'Delete this task', task_path(task), method: :delete, data: {:confirm => "Are you sure you want to delete ?"} %>
+ </p>
   <% end %>
 
-</ul>
-
-<%= link_to "Add a new Task", new_path %>
+  <%= link_to "+ Add a new task", new_task_path %>
